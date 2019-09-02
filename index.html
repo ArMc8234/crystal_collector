@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="style/css" href="assets\css\style.css"/>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- first row -->
+        <div class="row">
+            <div id="spacer" class="col-md-2">
+                &nbsp;
+            </div>
+
+            <div id="gameTitle" class="col-md-4">
+                 <h2 class="display-3">Crystal Collector</h2>
+             </div>
+
+            <div id="spacer" class="col-md-6">
+                &nbsp;
+            </div> 
+
+        </div>
+
+        <!-- second row -->
+        <div class="row">
+            <div id="spacer" class="col-md-2">
+                &nbsp;
+            </div> 
+            <div id="directions" class="col-md-4">
+                <p>Instructions</p>
+            </div>
+            <div id="spacer" class="col-md-6">
+                &nbsp;
+            </div> 
+        </div>
+
+        <!-- third row -->
+        <div class="row">
+            <div id="spacer" class="col-md-2">
+                        &nbsp;
+            </div> 
+            <div id="randomNum" class="col-md-3"></div>
+            <div id="spacer" class="col-md-1">
+                    &nbsp;
+                </div> 
+            <div id="gameTally" class="col-md-2">
+                <p id="wins"></p>
+                <p id="losses"></p>
+            </div>
+            <div id="spacer" class="col-md-4">
+                    &nbsp;
+             </div> 
+        </div>
+
+        <div class="row">
+            <div id="spacer" class="col-md-2">
+                        &nbsp;
+            </div> 
+            <div class="col-md-8">
+                    <button type="button" id="crystal-1" class="btn btn-primary btn-lg">Large button</button>
+                    <button type="button" id="crystal-2" class="btn btn-primary btn-lg">Large button</button>
+                    <button type="button" id="crystal-3" class="btn btn-primary btn-lg">Large button</button>
+                    <button type="button" id="crystal-4" class="btn btn-primary btn-lg">Large button</button>
+            </div>
+            <div id="spacer" class="col-md-2">
+                    &nbsp;
+            </div> 
+        </div>
+        <!-- add playerscore here -->
+        <div class="row">
+                <div id="spacer" class="col-md-2">
+                        &nbsp;
+                 </div> 
+                <div class="card border-dark mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Header</div>
+                        <div class="card-body text-dark">
+                          <h5 class="card-title">Dark card title</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                <div id="spacer" class="col-md-3">
+                     &nbsp;
+                </div> 
+        </div>
+
+    <script>
+    $(document).ready(function () {
+
+      var wins = 0;
+      var losses = 0;
+      var randomNumber ="";
+      var gameStarted = false;
+
+      var winText = document.getElementById('#wins');
+      var lossText = document.getElementById('#losses');
+      var randonNumText = document.getElementById('#randomNum');
+      var playerScoreText = document.getElementById('#playerScore');
+      
+
+    function selectNewNumber() {
+        randomNumber = (Math.floor(Math.random()*120) + 19);
+        return randomNumber;
+        $("#randomNumText").text(randomNumber);
+    };
+
+
+    function crystalVal() {
+        for (var i = 0; i < 5; i++){
+         $("#crystal-"+i).attr("value", (Math.floor(Math.random() *12)+1) );
+        }
+    };
+    
+    
+
+
+    function startGame() {
+        gameStarted = true;                     //sets game status to "started"
+        selectNewNumber();          //select new random number and display it
+        crystalVal();                           //reset the crystal values
+        playerScore = 0;                        //returns player score to zero for the new game
+        $("#playerScoreText").text(playerScore);          //clear the player score section
+        $("#winText").text(wins);               //display the total wins
+        $("#lossText").text(losses);            //display the total losses
+       
+    }
+
+    function playGame() {
+        $('.button').on('click', function() {
+            $(playerScore)+=(this.val);
+            $('#playerScoreText').text(playerScore);
+            if (playerScore < randomNumber) {
+                return;
+            }
+            else if (playerScore === randomNumber) {
+                wins++;
+                alert("Winner, Winner!!!");
+                gameStarted = false;
+                var playOn = confirm("Select okay to continue or cancel to end");
+                if (playOn) {
+                    startGame();
+                }
+                else (playOn = false); {
+                    return;
+                 }
+            }
+            else (playerScore > randomNumber); {
+                loses++;
+                alert("Sorry. You lose!");
+                gameStarted = false;
+                var playOn = confirm("Select okay to continue or cancel to end");
+                if (playOn) {
+                    startGame();
+                }
+                else (playOn = false); {
+                    break;
+                 }
+             }
+                  
+
+        });
+    }
+    
+    startGame();
+    playGame();
+    console.log("Random Number:"+randomNumber);
+    
+
+
+   
+    });
+      
+   
+    
+    </script>
+
+
+    </div>
+
+</body>
+</html>
