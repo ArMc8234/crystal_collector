@@ -1,17 +1,28 @@
 body {
     box-sizing: border-box;
-    background-image: url("../images/ruby.jpg");
+    background-image: url(../images/tilebackground.jpg);
 }
 
 #gameTitle {
-    margin: 2px solid black;
+    border: 2px solid black;
+    color: white;
+    background-color: coral;
+    margin-bottom: 10px;
 }
 
-#randomNum {
+#directions {
+    background-color: blanchedalmond;
+    color: teal;
+    margin-bottom: 10px;
+}
+
+#randomNumFrame {
    height: 200px;
    padding: 40px;
-   background-color: grey;
+   background-color: MediumSeaGreen;
    color: black;
+   text-align: center;
+   margin-right: 10px;
 }
 
 #gameTally {
@@ -19,4 +30,9 @@ body {
     padding: 40px;
     background-color: greenyellow;
     color: black;
+    text-align: left;
 } 
+
+#scoreBoard {
+    margin-top: 10px;
+}
