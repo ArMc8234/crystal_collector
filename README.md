@@ -18,7 +18,7 @@ The value is hidden from the player as they attempt to use a combination of butt
 
 It's a simple game that is a lot of fun, but don't just take my word for it...
 
-[Game Link] https://armc8234.github.io/crystal_collector
+**Game Link:** https://armc8234.github.io/crystal_collector
 
 # Game On !!!
 
